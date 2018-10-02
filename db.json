@@ -64,13 +64,13 @@
       "name": "Honor 7X (Blue, 4GB RAM + 32GB Memory)",
       "price": "11999",
       "image_url": "https://images-eu.ssl-images-amazon.com/images/I/41dB9LZpWJL._AC_US160_FMwebp_QL70_.jpg",
-      "rating": 4.2
+      "rating": 4
     },
     {
       "name": "Huawei Nova 3i (Black, 4GB RAM + 128GB Memory)",
       "price": "20900",
       "image_url": "https://images-eu.ssl-images-amazon.com/images/I/315ZM2wSJPL._AC_US160_FMwebp_QL70_.jpg",
-      "rating": 4.1
+      "rating": 4
     }
   ]
 }
