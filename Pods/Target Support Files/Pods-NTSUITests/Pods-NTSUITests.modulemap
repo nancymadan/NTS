@@ -1,0 +1,6 @@
+framework module Pods_NTSUITests {
+  umbrella header "Pods-NTSUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
