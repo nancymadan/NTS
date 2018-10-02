@@ -8,6 +8,18 @@
 
 import UIKit
 
-class ProductModel: NSObject {
+struct Response: Codable {
+    let products: [Product]
+}
 
+struct Product: Codable {
+    let name, price: String
+    let imageURL: String
+    let rating: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case name, price
+        case imageURL = "image_url"
+        case rating
+    }
 }

@@ -4,12 +4,21 @@ PODS:
     - Alamofire (~> 4.7)
   - LoadingPlaceholderView (0.0.2)
   - RMPZoomTransitionAnimator (1.0.3)
+  - RxCocoa (4.3.1):
+    - RxSwift (~> 4.0)
+  - RxGesture (2.0.1):
+    - RxCocoa (~> 4.3.1)
+    - RxSwift (~> 4.3.1)
+  - RxSwift (4.3.1)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
   - LoadingPlaceholderView
   - RMPZoomTransitionAnimator
+  - RxCocoa
+  - RxGesture
+  - RxSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -17,13 +26,19 @@ SPEC REPOS:
     - AlamofireImage
     - LoadingPlaceholderView
     - RMPZoomTransitionAnimator
+    - RxCocoa
+    - RxGesture
+    - RxSwift
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireImage: 78d67ccbb763d87ba44b21583d2153500a195630
   LoadingPlaceholderView: e913f5ae2673612d405ce395acca7cedb1bfaa81
   RMPZoomTransitionAnimator: 33ded739d91052810c05c8e553663cc9ec79275b
+  RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
+  RxGesture: 26ede4ed13ffc6336d29dbd9a8dff229bdb72de7
+  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
 
-PODFILE CHECKSUM: 744358fcf260733f62f1ec67736c655f0ea7e636
+PODFILE CHECKSUM: bc4780ba26679d0972d2ac1c990ef900b382bb1f
 
 COCOAPODS: 1.5.3

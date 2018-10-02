@@ -46,6 +46,9 @@
 		636263F22163BB630047A09C /* ProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636263F12163BB630047A09C /* ProductsCollectionViewCell.swift */; };
 		636263F32163BB630047A09C /* ProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636263F12163BB630047A09C /* ProductsCollectionViewCell.swift */; };
 		636263F42163BB630047A09C /* ProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636263F12163BB630047A09C /* ProductsCollectionViewCell.swift */; };
+		636263F72163C46B0047A09C /* CommonFuncations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636263F62163C46B0047A09C /* CommonFuncations.swift */; };
+		636263F82163C4720047A09C /* CommonFuncations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636263F62163C46B0047A09C /* CommonFuncations.swift */; };
+		636263F92163C4730047A09C /* CommonFuncations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636263F62163C46B0047A09C /* CommonFuncations.swift */; };
 		815CB6EF705F5085DF6C214C /* Pods_NTSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 590F2278DCA89B9BF1B8AA07 /* Pods_NTSUITests.framework */; };
 		C6C9CA9ADF3B9CBE87FB98DD /* Pods_NTSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89B252C23450FED4BD463A08 /* Pods_NTSTests.framework */; };
 /* End PBXBuildFile section */
@@ -95,6 +98,7 @@
 		636263E82163BAC30047A09C /* ProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsViewModel.swift; sourceTree = "<group>"; };
 		636263EC2163BAD10047A09C /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		636263F12163BB630047A09C /* ProductsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewCell.swift; sourceTree = "<group>"; };
+		636263F62163C46B0047A09C /* CommonFuncations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonFuncations.swift; sourceTree = "<group>"; };
 		6BFB7666EF473176853F6D1F /* Pods-NTSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NTSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NTSTests/Pods-NTSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		89B252C23450FED4BD463A08 /* Pods_NTSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NTSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C891A98323057EBD93FD3AE7 /* Pods-NTS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NTS.release.xcconfig"; path = "Pods/Target Support Files/Pods-NTS/Pods-NTS.release.xcconfig"; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 		635F66C921638FD400FF6010 /* NTS */ = {
 			isa = PBXGroup;
 			children = (
+				636263F52163C46B0047A09C /* CommonFuncations */,
 				636263F02163BB630047A09C /* UICollectionViewCells */,
 				635F674E2163B3BA00FF6010 /* Constants */,
 				635F670F216399FE00FF6010 /* ApiRequestHandler */,
@@ -279,6 +284,14 @@
 				636263F12163BB630047A09C /* ProductsCollectionViewCell.swift */,
 			);
 			path = UICollectionViewCells;
+			sourceTree = "<group>";
+		};
+		636263F52163C46B0047A09C /* CommonFuncations */ = {
+			isa = PBXGroup;
+			children = (
+				636263F62163C46B0047A09C /* CommonFuncations.swift */,
+			);
+			path = CommonFuncations;
 			sourceTree = "<group>";
 		};
 		83E05C962B958984B2846F69 /* Pods */ = {
@@ -466,6 +479,9 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/LoadingPlaceholderView/LoadingPlaceholderView.framework",
 				"${BUILT_PRODUCTS_DIR}/RMPZoomTransitionAnimator/RMPZoomTransitionAnimator.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxGesture/RxGesture.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -475,6 +491,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LoadingPlaceholderView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RMPZoomTransitionAnimator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxGesture.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -540,6 +559,7 @@
 				635F67152163AD2100FF6010 /* ProductListViewController.swift in Sources */,
 				635F67502163B47A00FF6010 /* ApiContsants.swift in Sources */,
 				635F67542163B49900FF6010 /* GlobalConstants.swift in Sources */,
+				636263F72163C46B0047A09C /* CommonFuncations.swift in Sources */,
 				635F6711216399FE00FF6010 /* ApiRequest.swift in Sources */,
 				636263F22163BB630047A09C /* ProductsCollectionViewCell.swift in Sources */,
 				636263ED2163BAD10047A09C /* ProductModel.swift in Sources */,
@@ -554,6 +574,7 @@
 				635F66E321638FD600FF6010 /* NTSTests.swift in Sources */,
 				636263EA2163BAC30047A09C /* ProductsViewModel.swift in Sources */,
 				636263F32163BB630047A09C /* ProductsCollectionViewCell.swift in Sources */,
+				636263F82163C4720047A09C /* CommonFuncations.swift in Sources */,
 				635F671221639A0400FF6010 /* ApiRequest.swift in Sources */,
 				635F67512163B47A00FF6010 /* ApiContsants.swift in Sources */,
 				635F67552163B49900FF6010 /* GlobalConstants.swift in Sources */,
@@ -570,6 +591,7 @@
 				635F66EE21638FD600FF6010 /* NTSUITests.swift in Sources */,
 				636263EB2163BAC30047A09C /* ProductsViewModel.swift in Sources */,
 				636263F42163BB630047A09C /* ProductsCollectionViewCell.swift in Sources */,
+				636263F92163C4730047A09C /* CommonFuncations.swift in Sources */,
 				635F671321639A0400FF6010 /* ApiRequest.swift in Sources */,
 				635F67522163B47A00FF6010 /* ApiContsants.swift in Sources */,
 				635F67562163B49900FF6010 /* GlobalConstants.swift in Sources */,

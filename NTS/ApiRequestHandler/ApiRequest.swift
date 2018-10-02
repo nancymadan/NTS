@@ -8,58 +8,65 @@
 
 import UIKit
 import Alamofire
-
-
-enum ApiMethod {
-    case GET
-    case POST
-}
-class ApiRequest: NSObject {
+import RxSwift
+import LoadingPlaceholderView
+class ApiRequest {
+     private var loadingPlaceholderView = LoadingPlaceholderView()
     
-    
-    static func callApiWithParameters(url: String , withParameters parameters:[String:AnyObject], success:@escaping (AnyClass)->(), failure: @escaping (NSString)->(), method: ApiMethod, img: UIImage? , imageParamater: String,headers: [String:String]){
-        let manager = Alamofire.SessionManager.default
-        // manager.session.configuration.timeoutIntervalForRequest = 30
-        manager.request(url ,method : .get,parameters:parameters,encoding:URLEncoding.httpBody ,headers: headers).responseJSON { response
-            in
-            let statusCode = response.response?.statusCode
-            switch response.result{
-                
-            case .success(_):
-                if(statusCode==200){
-                    
-                    if response.data != nil{
-                        do{
-                            //                         let json = try JSONDecoder().decode(Welcome.self, from: data)
-                            //                            success(json.search)
-                            //                            }
-                            //                            catch let error as NSError {
-                            //                                print("Could not save\(error),\(error.userInfo)")
-                            //                            }
+    func callApiWithParameters(url: String,onView:UIView)  -> Observable<[ProductsViewModel]>{
+        
+        return Observable<[ProductsViewModel]>.create { observer in
+            self.loadingPlaceholderView.cover(onView)
+            let manager = Alamofire.SessionManager.default
+            // manager.session.configuration.timeoutIntervalForRequest = 30
+            manager.request(url ,method : .get,parameters:[:],encoding:URLEncoding.httpBody ,headers: [:]).responseJSON { response
+                in
+                let statusCode = response.response?.statusCode
+                switch response.result{
+                   
+                case .success(_):
+                     self.loadingPlaceholderView.uncover()
+                    if(statusCode==200){
+                        
+                        if let data = response.data{
+                            do{
+                                let json = try JSONDecoder().decode(Response.self, from: data)
+                                var arrM : [ProductsViewModel] = []
+                                for product in json.products{
+                                    arrM.append(ProductsViewModel.init(model: product))
+                                }
+                                observer.onNext(arrM)
+                            }
+                            catch let error as NSError {
+                                observer.onError(error)
+                            }
                         }
                     }
                     else{
                         if let data = response.result.value{
                             let dict=data as! NSDictionary
-                            failure(dict.value(forKey: "error_description") as! NSString)
+                            observer.onError((dict.value(forKey: "error_description") as! NSString) as! Error)
                         }
                         else if let error = response.result.error{
-                            failure(error.localizedDescription as NSString)
+                            observer.onError(error)
                         }
                     }
                     break
-                }
-                
-            case .failure(_):
-                if let error = response.result.error{
-                    let str = error.localizedDescription as NSString
-                    if str.isEqual(to: "JSON could not be serialized because of error:\nThe data couldn’t be read because it isn’t in the correct format."){
-                        return
+                case .failure(_):
+                     self.loadingPlaceholderView.uncover()
+                    if let error = response.result.error{
+                        let str = error.localizedDescription as NSString
+                        if str.isEqual(to: "JSON could not be serialized because of error:\nThe data couldn’t be read because it isn’t in the correct format."){
+                            
+                        }
+                        
+                        observer.onError(error)
                     }
-                    
-                    failure(error.localizedDescription as NSString)
+                    observer.onCompleted()
                 }
-                break
+              
+            }
+            return Disposables.create {
             }
         }
     }
