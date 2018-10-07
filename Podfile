@@ -6,6 +6,11 @@ target 'NTS' do
   use_frameworks!
 pod 'Alamofire'
  pod 'AlamofireImage'
+ pod 'RxSwift'
+ pod 'RxCocoa'
+ pod 'RxCoreData'
+ pod 'RxBlocking'
+ pod 'RxDataSources'
 pod 'RMPZoomTransitionAnimator'
 
 pod 'LoadingPlaceholderView'
