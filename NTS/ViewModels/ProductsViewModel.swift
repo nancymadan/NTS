@@ -7,35 +7,64 @@
 //
 
 import UIKit
+import CoreData
+import RxCoreData
+import RxSwift
+import RxCocoa
 
-struct ProductsViewModel {
-    let name, price: String
-    let imageURL: String
-    let rating: Int
-    /**
-     init:- product to productViewModel to get calculated data
- */
-    init(model:Product) {
-        self.name = model.name
-        self.imageURL = model.imageURL
-        self.price = "INR " + model.price
-        self.rating = model.rating
+struct ProductsViewModel  {
+    var name, price: String
+    var imageURL: String
+    var rating: Int
+    var isAddedToCart: Int
+}
+
+
+extension ProductsViewModel : Persistable {
+    
+    typealias T = NSManagedObject
+    
+    static var entityName: String{
+        return KCoreDataEntityProductList
     }
     
-//    /**
-//     getTheList:-get the list from server
-// */
-//    static func getTheList(success:@escaping ([ProductsViewModel])->()){
-//        ApiRequest.callApiWithParameters(url: KBaseURL, withParameters: [:], success: { (arrProducts) in
-//            var arrProductsModel = [ProductsViewModel]()
-//            for product in arrProducts{
-//                arrProductsModel.append(ProductsViewModel.init(model: product))
-//            }
-//            
-//            success(arrProductsModel)
-//        }, failure: { (error) in
-//            CommonFuncations.showAlertWithTitle(title: "Error", message: error as String)
-//            
-//        }, method: .GET, img: nil, imageParamater: "", headers: [:])
-//    }
+    static var primaryAttributeName: String{
+        return KCoreDataName
+    }
+    
+    var identity: String{
+        return name
+    }
+    /**
+     init:- productViewModel to entity to get calculated data
+     */
+    init(entity: T) {
+        name = entity.value(forKey: KCoreDataName) as! String
+        imageURL = entity.value(forKey: KCoreDataImage) as! String
+        
+        
+        if (entity.value(forKey: KCoreDataPrice) as! String).contains("INR") {
+            self.price = (entity.value(forKey: KCoreDataPrice) as! String)
+        }
+        else{
+            self.price = "INR " + (entity.value(forKey: KCoreDataPrice) as! String)
+        }
+        rating = entity.value(forKey: KCoreDataRating) as! Int
+        isAddedToCart = entity.value(forKey: KCoreDataIsAddedToCart) as? Int ?? 0
+    }
+    func update(_ entity: T) {
+        entity.setValue(name, forKey:  KCoreDataName)
+        entity.setValue(imageURL, forKey: KCoreDataImage)
+        entity.setValue(price, forKey:  KCoreDataPrice)
+        entity.setValue(rating, forKey: KCoreDataRating)
+        if isAddedToCart != -1{
+            entity.setValue(isAddedToCart, forKey: KCoreDataIsAddedToCart)
+        }
+        do {
+            try entity.managedObjectContext?.save()
+        } catch let e {
+            print(e)
+        }
+    }
+    
 }

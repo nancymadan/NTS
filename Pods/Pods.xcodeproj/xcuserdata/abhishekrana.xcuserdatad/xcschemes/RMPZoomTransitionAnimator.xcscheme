@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9BE8A6B81E6DCF0CB99267A31FC9C758"
+               BlueprintIdentifier = "12526BB24C2687951EB737A93F29D98A"
                BlueprintName = "RMPZoomTransitionAnimator"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "RMPZoomTransitionAnimator.framework">
