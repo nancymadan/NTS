@@ -14,7 +14,7 @@ import RxDataSources
 import RxCoreData
 import CoreData
 
-class HistoryListViewController: UIViewController {
+class HistoryListViewController: UIViewController ,UINavigationControllerDelegate{
      var collList: UICollectionView!
     var managedObjectContext = APPDELEGATE?.persistentContainer.viewContext
     private let disposeBag = DisposeBag()
@@ -49,6 +49,7 @@ class HistoryListViewController: UIViewController {
                 btn.isSelected = cell.btnStars.index(of:btn)! < model.rating ? true : false
                 
             }
+            cell.btnAddToCart.isHidden = true
             cell.lblTitle.text = model.name
             guard let url = URL.init(string:model.imageURL)else {
                 return
@@ -75,6 +76,7 @@ class HistoryListViewController: UIViewController {
         
     }
 
-    
+    //MARK:-UINavigationController Delegate
+   
 
 }
